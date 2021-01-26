@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Classes\ImageManager.cs" />
     <Compile Include="Classes\ProcessData.cs" />
+    <Compile Include="Classes\ProcessManager.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MarkImagePosition.resx">
       <DependentUpon>MarkImagePosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SnipScreen.resx">
       <DependentUpon>SnipScreen.cs</DependentUpon>

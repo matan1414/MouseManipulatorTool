@@ -24,13 +24,14 @@ namespace AutoClicker
         {
             InitializeComponent();
             
-            this.Opacity = 0.1;
+            this.Opacity = 0.01;
             Frame.BorderStyle = BorderStyle.FixedSingle;
             Console.WriteLine();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             ImageManager mgr = new ImageManager();
             Bitmap ss = mgr.PrintScreen(100, 100, 100, 100);
             MarkImagePosition mip = new MarkImagePosition(ss);
@@ -38,6 +39,7 @@ namespace AutoClicker
             {
                 Console.WriteLine("aaaa");
             }
+            */
         }
 
         private void SnipScreen_MouseClick(object sender, MouseEventArgs e)
@@ -93,15 +95,20 @@ namespace AutoClicker
                 this.MouseUpY = e.Y;
 
                 ImageManager mgr = new ImageManager();
-                Bitmap ss = mgr.PrintScreen(Frame.Bounds.X, Frame.Bounds.Y, Frame.Bounds.Width, Frame.Bounds.Height);
-                MarkImagePosition mip = new MarkImagePosition(ss);
-                if (mip.ShowDialog() == DialogResult.OK)
-                {
-                    Console.WriteLine("aaaa");
-                }
+                Bitmap rectScreenShot = mgr.PrintScreen(Frame.Bounds.X, Frame.Bounds.Y, Frame.Bounds.Width, Frame.Bounds.Height);
+                MarkImagePosition mip = new MarkImagePosition(rectScreenShot, 0, 0);
 
-                HideFrame();
-                this.isMouseDown = false;
+                if(mip.ShowDialog() == DialogResult.OK)
+                {
+                    Program.AddTaskData(mip.taskData);
+                }
+                this.DialogResult = DialogResult.OK;
+                Bitmap fullScreenShoot = mgr.PrintScreen();
+                Point? po = mgr.FindInScreen(fullScreenShoot, rectScreenShot);
+
+                
+                Console.WriteLine(po.Value.X + "_" + po.Value.Y + " - " + Frame.Bounds.X + "_" + Frame.Bounds.Y);
+                this.Close();
             }   
         }
 
@@ -112,16 +119,6 @@ namespace AutoClicker
         }
         private void HideFrame() {
             Frame.Visible = false;
-        }
-
-        public void DrawRect(Rectangle rect)
-        {
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
-            System.Drawing.Graphics formGraphics;
-            formGraphics = this.CreateGraphics();
-            ControlPaint.DrawBorder(formGraphics, rect, Color.Black, ButtonBorderStyle.Solid);
-            myBrush.Dispose();
-            formGraphics.Dispose();
         }
 
     }

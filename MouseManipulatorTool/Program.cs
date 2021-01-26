@@ -23,7 +23,12 @@ namespace AutoClicker
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new AutoClicker());
+        }
+
+        public static string PathImageKey(string fileName)
+        {
+            return TASKS_IMAGES_FOLDER + @"\" + fileName + ".jpg";
         }
 
         /// <summary>
@@ -40,16 +45,55 @@ namespace AutoClicker
         /// <summary>
         /// Get ProcessData object from json file
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Retrun empty if file not exist </returns>
         public static ProcessData GetProgramData()
         {
             ProcessData result = new ProcessData();
-            using (StreamReader r = new StreamReader(PROGRAM_DATA_PATH))
+            try
             {
-                string jsonString = r.ReadToEnd();
-                result = JsonConvert.DeserializeObject<ProcessData>(jsonString);
+                if (File.Exists(PROGRAM_DATA_PATH))
+                {
+                    using (StreamReader r = new StreamReader(PROGRAM_DATA_PATH))
+                    {
+                        string jsonString = r.ReadToEnd();
+                        if(jsonString != string.Empty)
+                        {
+                            result = JsonConvert.DeserializeObject<ProcessData>(jsonString);
+                        }
+                    }
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return result;
+        }
+
+        /// <summary>
+        /// Remove task by index from json and return object
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static ProcessData RemoveTaskData(int index)
+        {
+            ProcessData programData = GetProgramData();
+            programData.TaskData.RemoveAt(index);
+            SaveProgramData(programData);
+            return programData;
+        }
+
+        /// <summary>
+        ///  Add new task by index from json and return object
+        /// </summary>
+        /// <param name="taskData"></param>
+        /// <returns></returns>
+        public static ProcessData AddTaskData(TaskData taskData) {
+            ProcessData programData = GetProgramData();
+            programData.TaskData.Add(taskData);
+            SaveProgramData(programData);
+            return programData;
         }
 
         /// <summary>

@@ -32,10 +32,11 @@
             this.BtnCancel = new System.Windows.Forms.Button();
             this.BtnOk = new System.Windows.Forms.Button();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutInner = new System.Windows.Forms.TableLayoutPanel();
+            this.Dot = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.tableLayoutPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutInner.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox
@@ -46,9 +47,10 @@
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Location = new System.Drawing.Point(3, 3);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(519, 361);
+            this.pictureBox.Size = new System.Drawing.Size(557, 414);
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // BtnCancel
             // 
@@ -64,7 +66,7 @@
             // BtnOk
             // 
             this.BtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnOk.Location = new System.Drawing.Point(364, 18);
+            this.BtnOk.Location = new System.Drawing.Point(402, 18);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(152, 38);
             this.BtnOk.TabIndex = 2;
@@ -79,46 +81,57 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel.ColumnCount = 1;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.tableLayoutPanel.Controls.Add(this.tableLayoutInner, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.pictureBox, 0, 0);
             this.tableLayoutPanel.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 2;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(525, 432);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(563, 485);
             this.tableLayoutPanel.TabIndex = 3;
             // 
-            // tableLayoutPanel1
+            // tableLayoutInner
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutInner.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.BtnOk, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnCancel, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 370);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(519, 59);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutInner.ColumnCount = 2;
+            this.tableLayoutInner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutInner.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutInner.Controls.Add(this.BtnOk, 1, 0);
+            this.tableLayoutInner.Controls.Add(this.BtnCancel, 0, 0);
+            this.tableLayoutInner.Location = new System.Drawing.Point(3, 423);
+            this.tableLayoutInner.Name = "tableLayoutInner";
+            this.tableLayoutInner.RowCount = 1;
+            this.tableLayoutInner.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutInner.Size = new System.Drawing.Size(557, 59);
+            this.tableLayoutInner.TabIndex = 4;
+            // 
+            // Dot
+            // 
+            this.Dot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Dot.Location = new System.Drawing.Point(521, 356);
+            this.Dot.Name = "Dot";
+            this.Dot.Size = new System.Drawing.Size(51, 43);
+            this.Dot.TabIndex = 4;
+            this.Dot.Text = "label1";
             // 
             // MarkImagePosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 456);
+            this.ClientSize = new System.Drawing.Size(587, 509);
+            this.Controls.Add(this.Dot);
             this.Controls.Add(this.tableLayoutPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "MarkImagePosition";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MarkImagePosition";
+            this.Text = "Mark Image Position";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutInner.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -128,6 +141,7 @@
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Button BtnOk;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutInner;
+        private System.Windows.Forms.Label Dot;
     }
 }
