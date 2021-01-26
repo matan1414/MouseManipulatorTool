@@ -8,13 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MouseManipulatorTool.Forms
+namespace AutoClicker
 {
     public partial class MarkImagePosition : Form
     {
-        public MarkImagePosition()
+        private Bitmap frameImage;
+        public MarkImagePosition(Bitmap image)
         {
             InitializeComponent();
+
+            this.frameImage = image;
+            pictureBox.Image = image;
+
+            BtnOk.DialogResult = DialogResult.OK;
+            BtnCancel.DialogResult = DialogResult.Cancel;
+
+            this.AcceptButton = BtnOk;
+            this.CancelButton = BtnCancel;
+        }
+
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnOk_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
