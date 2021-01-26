@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MouseManipulatorTool
+namespace AutoClicker
 {
     static class Program
     {
+        public const string TEMP_SS_FILE = "lastPrintScreen.jpg";
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,12 @@ namespace MouseManipulatorTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Main());
         }
+    }
+
+    public static class tools
+    {
+
     }
 }

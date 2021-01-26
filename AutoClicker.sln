@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1321
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseManipulatorTool", "MouseManipulatorTool\MouseManipulatorTool.csproj", "{0B176889-12D2-4887-9BDC-5694D9B444E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoClicker", "MouseManipulatorTool\AutoClicker.csproj", "{0B176889-12D2-4887-9BDC-5694D9B444E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

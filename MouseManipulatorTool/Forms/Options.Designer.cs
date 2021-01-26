@@ -1,6 +1,6 @@
-﻿namespace MouseManipulatorTool
+﻿namespace AutoClicker
 {
-    partial class Form1
+    partial class Options
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PrintScreen = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // PrintScreen
-            // 
-            this.PrintScreen.Location = new System.Drawing.Point(43, 41);
-            this.PrintScreen.Name = "PrintScreen";
-            this.PrintScreen.Size = new System.Drawing.Size(116, 41);
-            this.PrintScreen.TabIndex = 0;
-            this.PrintScreen.Text = "Print Screen";
-            this.PrintScreen.UseVisualStyleBackColor = true;
-            this.PrintScreen.Click += new System.EventHandler(this.PrintScreen_Click);
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.PrintScreen);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            this.Text = "Options";
         }
 
         #endregion
-
-        private System.Windows.Forms.Button PrintScreen;
     }
 }
-
