@@ -95,7 +95,8 @@ namespace AutoClicker
                 this.MouseUpY = e.Y;
 
                 ImageManager mgr = new ImageManager();
-                Bitmap rectScreenShot = mgr.PrintScreen(Frame.Bounds.X, Frame.Bounds.Y, Frame.Bounds.Width, Frame.Bounds.Height);
+                mgr.PrintScreen(Frame.Bounds.X, Frame.Bounds.Y, Frame.Bounds.Width, Frame.Bounds.Height);//
+                Bitmap rectScreenShot = new Bitmap(Image.FromFile(Program.TEMP_SNIP_SS_FILE));
                 MarkImagePosition mip = new MarkImagePosition(rectScreenShot, 0, 0);
 
                 if(mip.ShowDialog() == DialogResult.OK)
@@ -103,11 +104,19 @@ namespace AutoClicker
                     Program.AddTaskData(mip.taskData);
                 }
                 this.DialogResult = DialogResult.OK;
-                Bitmap fullScreenShoot = mgr.PrintScreen();
+                mgr.PrintScreen(); //
+                Bitmap fullScreenShoot = new Bitmap(Image.FromFile(Program.TEMP_SS_FILE));
                 Point? po = mgr.FindInScreen(fullScreenShoot, rectScreenShot);
-
+              
+                if(po != null)
+                {
+                    Console.WriteLine(po.Value.X + "_" + po.Value.Y + " - " + Frame.Bounds.X + "_" + Frame.Bounds.Y);
+                }
+                else
+                {
+                    Console.WriteLine("No");
+                }
                 
-                Console.WriteLine(po.Value.X + "_" + po.Value.Y + " - " + Frame.Bounds.X + "_" + Frame.Bounds.Y);
                 this.Close();
             }   
         }

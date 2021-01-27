@@ -10,7 +10,8 @@ namespace AutoClicker
 {
     static class Program
     {
-        public const string TEMP_SS_FILE = "lastPrintScreen.jpg";
+        public const string TEMP_SS_FILE = "lastPrintScreen.png";
+        public const string TEMP_SNIP_SS_FILE = "snip_lastPrintScreen.png";
         public const string PROGRAM_DATA_PATH = "ProgramData.json";
         public const string TASKS_IMAGES_FOLDER = "tasks";
         /// <summary>
@@ -28,7 +29,7 @@ namespace AutoClicker
 
         public static string PathImageKey(string fileName)
         {
-            return TASKS_IMAGES_FOLDER + @"\" + fileName + ".jpg";
+            return TASKS_IMAGES_FOLDER + @"\" + fileName + ".png";
         }
 
         /// <summary>

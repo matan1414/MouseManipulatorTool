@@ -29,8 +29,8 @@ namespace AutoClicker
             foreach(TaskData td in pd.TaskData)
             {
                 PictureBox pb = new PictureBox();
-                
-                string imagePath = Program.TASKS_IMAGES_FOLDER + @"\" + td.ImageKey + ".jpg";
+
+                string imagePath = Program.PathImageKey(td.ImageKey);
                 Bitmap bmp = new Bitmap(imagePath);
                 bmp = ImageManager.ScaleImage(bmp, tlpTasks.Width, 200);
                 pb.Image = bmp;

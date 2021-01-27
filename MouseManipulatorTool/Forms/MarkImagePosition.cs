@@ -69,6 +69,8 @@ namespace AutoClicker
         {
             string uniqFileName = GetTimestamp(DateTime.Now);
             string imagePath = Program.PathImageKey(uniqFileName);
+            ImageManager im = new ImageManager();
+            //im.SaveHighQualityBitmap(this.currentImage, imagePath);
             this.currentImage.Save(imagePath);
             this.taskData = new TaskData(uniqFileName, Dot.Bounds.X, Dot.Bounds.Y);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,16 +39,19 @@ namespace AutoClicker
             {
                 try
                 {
-                    if (true)//checkAfk()
+                    if (checkAfk())
                     {
                         int index = 0;
                         ImageManager im = new ImageManager();
-                        Bitmap haystack = im.PrintScreen();
+                        im.PrintScreen(); //
+                        Bitmap haystack = new Bitmap(Image.FromFile(Program.TEMP_SS_FILE));
+                        haystack.Save("Full.png", ImageFormat.Png);
                         foreach (TaskData td in processData.TaskData)
                         {
-                            Bitmap bmp = new Bitmap(Program.PathImageKey(td.ImageKey));
-                            haystack.Save("A" + index + ".jpg");
-                            bmp.Save("B" + index + ".jpg");
+                            string path = Program.PathImageKey(td.ImageKey);
+                            Bitmap bmp = new Bitmap(Image.FromFile(path));
+                            //Console.WriteLine();
+                            bmp.Save("bmp_" + index + ".png", ImageFormat.Png);
                             Point? po = im.FindInScreen(haystack, bmp);
                             if (po != null)
                             {

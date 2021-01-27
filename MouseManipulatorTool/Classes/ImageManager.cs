@@ -21,9 +21,18 @@ namespace AutoClicker
             int w = Screen.PrimaryScreen.Bounds.Width;
             int h = Screen.PrimaryScreen.Bounds.Height;
             Bitmap bitmap = new Bitmap(w, h);
-            Graphics graphics = Graphics.FromImage(bitmap as Image);
-            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
-            bitmap.Save(Program.TEMP_SS_FILE, ImageFormat.Jpeg);
+            try
+            {
+                Graphics graphics = Graphics.FromImage(bitmap as Image);
+                graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
+                bitmap.Save(Program.TEMP_SS_FILE, ImageFormat.Png);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             return bitmap;
         }
 
@@ -35,7 +44,7 @@ namespace AutoClicker
             Bitmap bitmap = new Bitmap(w, h);
             Graphics graphics = Graphics.FromImage(bitmap as Image);
             graphics.CopyFromScreen(x, y, 0, 0, bitmap.Size);
-            bitmap.Save("Snip_" + Program.TEMP_SS_FILE, ImageFormat.Jpeg);
+            bitmap.Save( Program.TEMP_SNIP_SS_FILE, ImageFormat.Png);
             return bitmap;
         }
 
@@ -163,5 +172,7 @@ namespace AutoClicker
             }
             return true;
         }
+
+        
     }
 }
